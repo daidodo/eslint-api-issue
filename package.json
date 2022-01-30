@@ -1,0 +1,42 @@
+{
+  "name": "eslint-api-issue",
+  "version": "1.0.0",
+  "description": "",
+  "bin": "dist/eslint_config.js",
+  "scripts": {
+    "clean": "rm -rf dist/",
+    "prepublishOnly": "npm run clean && webpack",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daidodo/eslint-api-issue.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daidodo/eslint-api-issue/issues"
+  },
+  "homepage": "https://github.com/daidodo/eslint-api-issue#readme",
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended"
+    ],
+    "rules": {
+      "no-unused-vars": [
+        "warn",
+        {
+          "varsIgnorePattern": "^_",
+          "argsIgnorePattern": "^_",
+          "ignoreRestSiblings": true
+        }
+      ]
+    },
+    "ignorePatterns": "**/xxx.js"
+  },
+  "dependencies": {
+    "eslint": "^8.8.0",
+    "webpack": "^5.67.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
