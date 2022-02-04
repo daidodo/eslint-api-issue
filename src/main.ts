@@ -4,8 +4,6 @@ import * as path from 'path';
 
 import { printESLintConfig } from './';
 
-console.log("printESLintConfig:", printESLintConfig);
-
 const [_node, exe, ...args] = process.argv;
 
 async function main() {

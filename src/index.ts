@@ -10,18 +10,19 @@ export async function printESLintConfig(filename: string) {
   try {
     console.log("ESLint version:", ESLint.version);
     const eslint = new ESLint();
+    console.log("eslint object:", eslint);
 
     const ignored = await eslint.isPathIgnored(filename);
     if (ignored) {
       console.log(`File '${filename}' is ignored by ESLint.`);
       process.exit(0);
     }
-    console.log("Resolved ESLint config:");
+    console.log("Resolving ESLint config:");
 
     const config = await eslint.calculateConfigForFile(filename);
     console.log(config);
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : `${err}`;
-    process.stderr.write(`Error: ${msg}\n`);
+    process.stderr.write(`\nError: ${msg}\n`);
   }
 }
