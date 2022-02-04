@@ -1,20 +1,7 @@
-#!/usr/bin/env node
+import { ESLint } from 'eslint';
+import fs from 'fs';
 
-"use strict";
-
-const { ESLint } = require("eslint");
-const path = require("path");
-const fs = require("fs");
-
-const [_node, exe, ...args] = process.argv;
-
-async function main(exe, args) {
-  if (args.length !== 1) {
-    process.stderr.write(`Usage: ${path.basename(exe)} filename\n`);
-    process.exit(1);
-  }
-
-  const [filename] = args;
+export async function printESLintConfig(filename: string) {
   if (!fs.existsSync(filename)) {
     process.stderr.write(`File '${filename}' doesn't exist.\n`);
     process.exit(1);
@@ -33,9 +20,8 @@ async function main(exe, args) {
 
     const config = await eslint.calculateConfigForFile(filename);
     console.log(config);
-  } catch (err) {
-    process.stderr.write(`Error: ${err.message}\n`);
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : `${err}`;
+    process.stderr.write(`Error: ${msg}\n`);
   }
 }
-
-void main(exe, args);

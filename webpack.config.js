@@ -1,11 +1,19 @@
 const path = require("path");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   target: "node",
-  entry: "./src/main.js",
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "eslint_config.js",
+  entry: "./src/main.ts",
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  resolve: {
+    extensions: [".ts", ".js"],
   },
 };
