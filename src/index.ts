@@ -17,6 +17,7 @@ export async function printESLintConfig(filename: string) {
       console.log(`File '${filename}' is ignored by ESLint.`);
       process.exit(0);
     }
+    
     console.log("Resolving ESLint config:");
 
     const config = await eslint.calculateConfigForFile(filename);
