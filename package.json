@@ -5,9 +5,9 @@
   "main": "dist/main.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "clean": "rm -rf dist/",
+    "webpack": "rm -rf dist && webpack",
     "prepublishOnly": "npm run clean && npm i && webpack",
-    "test": "test"
+    "test": "node dist/main.js src/index.ts"
   },
   "repository": {
     "type": "git",
